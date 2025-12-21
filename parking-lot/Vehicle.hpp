@@ -28,5 +28,11 @@ struct VehicleEqualityComparator{
     }
 };
 
+struct VehicleHash {
+    std::size_t operator()(const std::shared_ptr<Vehicle> & v) const {
+        return std::hash<std::string>{}(v->getPlateNumber());
+    }
+};
+
 
 #endif

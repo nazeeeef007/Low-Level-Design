@@ -4,7 +4,7 @@
 
 class Exit: public Access {
     public:
-        
+        Exit() = default;
 };
 
 #endif

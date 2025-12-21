@@ -5,7 +5,7 @@
 
 class Entry : public Access {
 public:
-    
+    Entry() = default;
 
 };
 

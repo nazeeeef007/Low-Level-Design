@@ -14,6 +14,11 @@ class Level {
             lots.clear();
         }
 
+        Level() {
+            lots.clear();
+            capacity = 8;
+        }
+
         int getCapacity() {
             return capacity;
         }
