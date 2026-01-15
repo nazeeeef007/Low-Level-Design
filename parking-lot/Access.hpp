@@ -30,6 +30,10 @@ class Access {
 
             return {vehicle, entryTime};
         }
+
+        bool empty() {
+            return vehicleQueue.empty();
+        }
     protected:
         std::queue<std::shared_ptr<Vehicle>> vehicleQueue;
 };

@@ -1,25 +1,30 @@
 #ifndef DRINK_HPP
 #define DRINK_HPP
-#include <string>
 
-class Drink {
+#include "Product.hpp"
+
+class Drink : public Product {
 private:
-    int id;
-    int price; // Changed to int (cents)
-    std::string name;
+    int volume;
+
 public:
-    Drink(int id, int price, std::string name) : id(id), price(price), name(name) {}
-    Drink() : id(0), price(0), name("") {}
+    Drink(int id, double price, const std::string& name, int volume)
+        : Product(id, price, name), volume(volume) {}
 
-    int getId() const { return id; }
-    int getPrice() const { return price; }
-    std::string getName() const { return name; }
+    Drink() : Product(0, 0.0, ""), volume(0) {}
 
-    // Comparator for std::map
+    int getId() const override { return id; }
+    double getPrice() const override { return price; }
+    std::string getName() const override { return name; }
+
+    int getVolume() const { return volume; }
+
+    // Comparator for std::map / std::set
     struct compareByDrinkId {
         bool operator()(const Drink& a, const Drink& b) const {
             return a.getId() < b.getId();
         }
     };
 };
+
 #endif

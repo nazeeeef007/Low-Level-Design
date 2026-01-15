@@ -36,22 +36,21 @@ class Level {
             return it->second;
         }
 
-        void park(std::shared_ptr<Vehicle> vehicle, int id) {
+        bool park(std::shared_ptr<Vehicle> vehicle, int id) {
             if (id < 0 || id >= capacity) {
-                std::stringstream ss;
-                ss << "Lot id must be between 0 and " << capacity;
-                throw std::invalid_argument(ss.str());
+                return 0;
             }
 
             if (lots.size() == capacity) {
-                throw std::runtime_error("Level is full");
+                return 0;
             }
 
             if (lots.find(id) != lots.end()) {
-                throw std::runtime_error("Lot is already occupied");
+                return 0;
             }
 
             lots[id] = std::move(vehicle);
+            return 1;
         }
 
 
